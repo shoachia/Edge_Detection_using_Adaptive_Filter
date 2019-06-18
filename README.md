@@ -6,19 +6,19 @@ Edge detection is one of the most common used technique in image analysis. It is
 In this paper, we performed our algorithm on **Color BSD68 dataset(CBSD68)**. This benchmark dataset is widely used for measuring image denoising algorithms performance. It includes the original .jpg files, converted to lossless .png, and noisy with Additive White Gaussian Noise of different levels.
 
 ### 3. Noise Reduction
-The Adaptive smoothing is a class of typical nonlinear smoothing technique. The edge preserve smoothing algorithm is applied independently to every image pixel using different coefficients. To calculate the coefficients of the convolution mask for every pixels, Manhattan color distances $d_i , i = 1,.,.,.,8$ are extracted between the central pixel and the eight neighboring pixels in a 3x3 sliding window, which are normalized in the range $[0,1]$.
+The Adaptive smoothing is a class of typical nonlinear smoothing technique. The edge preserve smoothing algorithm is applied independently to every image pixel using different coefficients. To calculate the coefficients of the convolution mask for every pixels, Manhattan color distances ![](https://i.imgur.com/Q0iXp3s.png) are extracted between the central pixel and the eight neighboring pixels in a 3x3 sliding window, which are normalized in the range [0,1].
 
 That is, 
 
 ![](https://i.imgur.com/60lLZGf.png)
 
-where $R_c,G_c,B_c$ is the central pixel value in the current sliding window.
+where ![](https://i.imgur.com/zlpQsoR.png) is the central pixel value in the current sliding window.
 
 After calculating the color distance between its neighborhoods, we can evaluate the weights based on these values(kernel coefficients). The following equation is used:
 
 ![](https://i.imgur.com/AaKJa8A.png)
 
-In words, $w_i$ receives larger values for smaller color distance so pixels
+In words, ![](https://i.imgur.com/PAR4Bqs.png) receives larger values for smaller color distance so pixels
 having small color distance from the central pixel receive large weights. This concludes to the following convolution mask:
 
 ![](https://i.imgur.com/8lz4o7D.png)
