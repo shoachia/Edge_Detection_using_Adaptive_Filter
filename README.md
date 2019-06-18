@@ -9,6 +9,7 @@ In this paper, we performed our algorithm on **Color BSD68 dataset(CBSD68)**. Th
 The Adaptive smoothing is a class of typical nonlinear smoothing technique. The edge preserve smoothing algorithm is applied independently to every image pixel using different coefficients. To calculate the coefficients of the convolution mask for every pixels, Manhattan color distances $d_i , i = 1,.,.,.,8$ are extracted between the central pixel and the eight neighboring pixels in a 3x3 sliding window, which are normalized in the range $[0,1]$.
 
 That is, 
+
 ![](https://i.imgur.com/60lLZGf.png)
 
 where $R_c,G_c,B_c$ is the central pixel value in the current sliding window.
