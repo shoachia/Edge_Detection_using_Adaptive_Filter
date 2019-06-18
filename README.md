@@ -9,32 +9,18 @@ In this paper, we performed our algorithm on **Color BSD68 dataset(CBSD68)**. Th
 The Adaptive smoothing is a class of typical nonlinear smoothing technique. The edge preserve smoothing algorithm is applied independently to every image pixel using different coefficients. To calculate the coefficients of the convolution mask for every pixels, Manhattan color distances $d_i , i = 1,.,.,.,8$ are extracted between the central pixel and the eight neighboring pixels in a 3x3 sliding window, which are normalized in the range $[0,1]$.
 
 That is, 
-
-\begin{equation}
-d_i = \frac{|R_{c} - R_{i}| + |G_{c} - G_{i}| + |B_{c} - B_{i}|}{3} , d_i = [0,1]
-\end{equation}
+![](https://i.imgur.com/60lLZGf.png)
 
 where $R_c,G_c,B_c$ is the central pixel value in the current sliding window.
 
 After calculating the color distance between its neighborhoods, we can evaluate the weights based on these values(kernel coefficients). The following equation is used:
 
-\begin{equation}
-w_i = (1 - d_i)^p ,where \quad p \ge 1 
-\end{equation}
+![](https://i.imgur.com/AaKJa8A.png)
 
 In words, $w_i$ receives larger values for smaller color distance so pixels
 having small color distance from the central pixel receive large weights. This concludes to the following convolution mask:
 
-\begin{equation}
-\frac{1}{\sum_{i = 1}^{8} w_i}
-\left[
-\begin{array}
-   w_1 & w_2 & w_3 \\
-   w_4 & 0 & w_5 \\
-   w_6 & w_7 & w_8
-\end{array}  
-\right]
-\end{equation}
+![](https://i.imgur.com/8lz4o7D.png)
 
 The filtering of the image is achieved by applying the above convolution mask on RGB channels respectively. Factor p in equation(2) scales exponentially the color distance which means that it controls the blur effect on the edges.
 
