@@ -21,7 +21,7 @@ After calculating the color distance between its neighborhoods, we can evaluate 
 In words, ![](https://i.imgur.com/PAR4Bqs.png) receives larger values for smaller color distance so pixels
 having small color distance from the central pixel receive large weights. This concludes to the following convolution mask:
 
-![](https://i.imgur.com/8lz4o7D.png)
+![](https://i.imgur.com/5RIDyS1.png)
 
 The filtering of the image is achieved by applying the above convolution mask on RGB channels respectively. Factor p in equation(2) scales exponentially the color distance which means that it controls the blur effect on the edges.
 
